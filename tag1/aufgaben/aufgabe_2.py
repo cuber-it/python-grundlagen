@@ -14,7 +14,7 @@
 # 
 # Regeln für die Aufzugwahl:
 #
-#    Der Aufzug, der am nächsten zur Ziel-Etage ist, fährt.
+#    Der Aufzug, der am nächsten zur Personen-Etage ist, fährt.
 #    Bei gleicher Entfernung entscheidet die Reihenfolge der Aufzüge (A vor B vor C).
 #    Nach jeder Fahrt aktualisiert sich die Position des Aufzugs
 #
@@ -27,14 +27,14 @@
 #    Abbruch: Mit "exit" kann das Programm beendet werden
 
 # Initialpositionen der Aufzüge
-aufzug_a = 1
-aufzug_b = 1
-aufzug_c = 1
-erdgeschoss = 0
-skyfloor = 8
+elevator_a = 1
+elevator_b = 1
+elevator_c = 1
+BASEMENT = 0
+SKYFLOOR = 8
 
 print("Willkommen zur Aufzug-Simulation!")
-print(f"Es gibt 3 Aufzüge: A, B und C. Die Etagen reichen von {erdgeschoss} (Erdgeschoss) bis {skyfloor} (Skyfloor).")
+print(f"Es gibt 3 Aufzüge: A, B und C. Die Etagen reichen von {BASEMENT} (Erdgeschoss) bis {SKYFLOOR} (SKYFLOOR).")
 print('Gib "exit" ein, um das Programm zu beenden.\n')
 
 while True:
@@ -46,11 +46,11 @@ while True:
     try:
         # Start-Etage eingeben
         startpunkt = int(eingabe)
-        if startpunkt < erdgeschoss or startpunkt > skyfloor:
+        if startpunkt < BASEMENT or startpunkt > SKYFLOOR:
             print("Ungültige Etage. Bitte gib eine gültige Etage ein.")
             continue
         endpunkt = int(input("Eingabe-2: bis (Etage): "))
-        if endpunkt < erdgeschoss or endpunkt > skyfloor:
+        if endpunkt < BASEMENT or endpunkt > SKYFLOOR:
             print("Ungültige Etage. Bitte gib eine gültige Etage ein.")
             continue    
         if startpunkt == endpunkt:
@@ -58,32 +58,32 @@ while True:
             continue
 
         # Berechnung des nächstgelegenen Aufzugs (zum Startpunkt des Benutzers)
-        dist_a = abs(aufzug_a - startpunkt)
-        dist_b = abs(aufzug_b - startpunkt)
-        dist_c = abs(aufzug_c - startpunkt)
+        dist_a = abs(elevator_a - startpunkt)
+        dist_b = abs(elevator_b - startpunkt)
+        dist_c = abs(elevator_c - startpunkt)
 
         # Aufzugsauswahl basierend auf der kürzesten Entfernung
         if dist_a <= dist_b and dist_a <= dist_c:
             gewaehlter_aufzug = "A"
-            aufzug_position = aufzug_a
-            aufzug_a = endpunkt
+            aufzug_position = elevator_a
+            elevator_a = endpunkt
         elif dist_b <= dist_c:
             gewaehlter_aufzug = "B"
-            aufzug_position = aufzug_b
-            aufzug_b = endpunkt
+            aufzug_position = elevator_b
+            elevator_b = endpunkt
         else:
             gewaehlter_aufzug = "C"
-            aufzug_position = aufzug_c
-            aufzug_c = endpunkt
+            aufzug_position = elevator_c
+            elevator_c = endpunkt
         # Ausgabe: Fahrt von der aktuellen Position zum Benutzer und dann zur Ziel-Etage
         print(f"Aufzug {gewaehlter_aufzug} fährt von Etage {aufzug_position} zur Etage {startpunkt}, um dich abzuholen.")
         print(f"Dann fährt Aufzug {gewaehlter_aufzug} von Etage {startpunkt} nach Etage {endpunkt}.\n")
 
         # Aktueller Status der Aufzüge
         print("Aktueller Aufzug-Status:")
-        print(f"Aufzug A befindet sich jetzt auf Etage {aufzug_a}")
-        print(f"Aufzug B befindet sich jetzt auf Etage {aufzug_b}")
-        print(f"Aufzug C befindet sich jetzt auf Etage {aufzug_c}\n")
+        print(f"Aufzug A befindet sich jetzt auf Etage {elevator_a}")
+        print(f"Aufzug B befindet sich jetzt auf Etage {elevator_b}")
+        print(f"Aufzug C befindet sich jetzt auf Etage {elevator_c}\n")
 
     except ValueError:
         print("Ungültige Eingabe. Bitte gib eine gültige Zahl ein.")

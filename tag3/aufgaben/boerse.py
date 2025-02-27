@@ -45,3 +45,4 @@ while True:
     print(formatted_date, daten.get(datum, "Nichts gefunden"))
 
 # Ausgabe
+

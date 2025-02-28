@@ -1,0 +1,2 @@
+chess_analyzer.py, ./trainer, f14de5ba16c88daced2f0210b7a151a5 
+chess_analyzer_gui.py, ./trainer, 9cc594acf273f14e0e5edae0d1a5ab03 

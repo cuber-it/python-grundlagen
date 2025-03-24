@@ -10,7 +10,7 @@
 #
 # Aufruf: bulkrename.py 'datienamensmuster' 'altert_namensbestandteil, 'ersetzung'
 #
-# Beispiel: bulkrename.py 'datei*' '_' 'datei_' # datei1.txt -> datei_1.txt, datei2.txt -> datei_2.txt, ...
+# Beispiel: bulkrename.py 'datei*' 'Datei' 'datei_' # datei1.txt -> datei_1.txt, datei2.txt -> datei_2.txt, ...
 #
 # Das sind verändernde Befehl. Ich habe immer ein flag -n als dryrun, soll heissen es wird nur ausgedruckt was passieren würde, wenn dieses flag nicht gesetzt ist.
 
